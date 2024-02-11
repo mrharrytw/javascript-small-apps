@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .title {
+            margin: 20px 0px 5px 20px;
+        }
+
+        .shopping-cart {
+            border: 1px solid black;
+            width: 60%;
+            height: 200px;
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .shopping-cart span{
+            font-size: 50px;
+            margin: auto;
+        }
+        .shopping-cart img{
+            height: 90%;
+            margin-left: 20px;
+        }
+
+        .info{
+            line-height: 30px;
+            padding-left: 30px;
+        }
+
+        .title img {
+            height: 30px;
+        }
+
+        .container {
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        h2 {
+            display: inline-block;
+        }
+
+        h2,
+        caption {
+            text-align: left;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 15px;
+            padding: 10px 0px;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        .table thead {
+            background-color: gold;
+            color: black;
+        }
+
+        .table th,
+        .table tr,
+        .table td {
+            border: 1px solid black;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 15px;
+            padding: 20px 10px 20px 10px;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: rgba(244, 244, 158, 0.5);
+        }
+
+        .api_image {
+            width: 150px;
+        }
+
+        .api_image:hover {
+            cursor: pointer;
+        }
+
+
+        .image-popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        #popupImage {
+            display: block;
+            max-width: auto;
+            max-height: 80%;
+            margin: 0 auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 50px;
+            font-size: 60px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .close-button:hover {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="shopping_container">
+        <div class="title">
+            
+            <h2>My Shopping Cart.</h2>
+        </div>
+        <div class="shopping-cart" id="shopping-cart">
+            <span>Thank you for buying with us!</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <table class="table">
+            <caption>Products List.</caption>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Rating</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody id="page">
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="image-popup-container" id="imagePopup">
+        <span class="close-button" onclick="closeImage()">×</span>
+        <img src="" alt="Popup Image" id="popupImage">
+    </div>
+</body>
+
+<script>
+    // Image Popup Start
+    function showImage(imageSrc) {
+        let popupImage = document.getElementById("popupImage");
+        popupImage.src = imageSrc;
+
+        let imagePopup = document.getElementById("imagePopup");
+        imagePopup.style.display = "block";
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeImage() {
+        let imagePopup = document.getElementById("imagePopup");
+        imagePopup.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+    // Image Popup End
+
+    //Api Section Start
+    let listBox = document.getElementById("shopping-cart");
+    let page = document.getElementById("page");
+    let list = "";
+    fetch('https://fakestoreapi.com/products')
+        .then(response => response.json())
+        .then(result => {
+            console.log(result)
+
+            for (let i = 0; i < result.length; i++) {
+                list += `<tr>
+                        <td>${result[i].id}</td>
+                        <td>${result[i].title} <a onclick="detail(${result[i].id})" href="#"> <img width="25px" src="./image/shoppingCart.png" alt="cart" /></a></td>
+                        <td>${result[i].price}$</td>
+                        <td>${result[i].rating.rate}</td>
+                        <td><img src="${result[i].image}" onclick="showImage(src)" class="api_image"></td>
+                    </tr>`
+            }
+            page.innerHTML = list;
+        });
+
+        function detail(id){
+            fetch('https://fakestoreapi.com/products/' + id)
+            .then((response) => response.json())
+            .then((data)=>{
+                listBox.innerHTML=`
+                <img src="${data.image}" alt="#">
+                <div class="info">
+                    <h3>${data.title}</h3>
+                    <h4>Price : ${data.price}$</h4>
+                    <h4>Rating : ${data.rating.rate}</h4>
+                </div>`
+            });
+        }
+    //Api Section End    
+</script>
+
+</html>

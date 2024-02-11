@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Tally Counter</title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+			box-sizing: border-box;
+		}
+		body{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+        .tally-container {
+        	width: 350px;
+        	height: auto;
+            border: 2px solid white;
+            height: auto;
+    		border-radius: 10px;
+    		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .heading-style {
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: large;
+            color: brown;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        .tally-box {
+            border: 2px solid brown;
+            border-radius: 10px;
+            max-width: 40%;
+            height: auto;
+            margin: auto;
+            margin-top: 20px;
+            background: rgb(246, 228, 228);
+        }
+
+        .tally {
+            display: flex;
+            height: 37px;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 30px;
+        }
+
+        .btns {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .btns button {
+            padding: 5px 25px;
+            background-color: brown;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: large;
+            margin: 0px 10px;
+            transition: all 0.5s;
+        }
+
+        .btns button:hover {
+            cursor: pointer;
+        }
+
+        .btns button:active {
+            transform: scale(0.9);
+        }
+	</style>
+</head>
+<body>
+	<div class="bodySec">
+            
+            <div class="tally-container">
+            	<div class="heading-style">
+                	<h2>My Tally Counter</h2>
+            	</div>
+                <div class="tally-box">
+                    <span class="tally" id="result">0</span>
+                </div>
+                <div class="btns">
+                    <button type="button" onclick="myFunctionTwo()">-</button>
+                    <button type="button" onclick="myFunctionThree()">Reset</button>
+                    <button type="button" onclick="myFunction()">+</button>
+                </div>
+            </div>
+        </div>
+</body>
+<script>
+    let x = 0;
+    function myFunction() {
+        document.getElementById("result").innerHTML = ++x;
+    }
+    function myFunctionTwo() {
+        document.getElementById("result").innerHTML = --x;
+    }
+    function myFunctionThree() {
+        x = 0;
+        document.getElementById("result").innerHTML = x;
+    }
+</script>
+</html>

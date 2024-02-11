@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <div class="mainContainer">
+        <div class="header">
+            <div class="title">..My mini Calculator..</div>
+        </div>
+        <div class="resultDisplay">
+            <span>0</span>
+        </div>
+        <div class="formbox">
+            <form id="calculatorForm">
+                <div class="num1">
+                    <label for="number1">1st Number:</label>
+                    <input type="number" name="number1" id="number1" placeholder="Enter a number..." />
+                    <small class="errorMsg" id="num1Error">1st number is requird !</small>
+                </div>
+                <div class="num2">
+                    <label for="number2">2nd Number:</label>
+                    <input type="number" name="number2" id="number2" placeholder="Enter a number..." />
+                    <small class="errorMsg" id="num2Error">2nd number is requird !</small>
+                </div>
+                <div class="operatorSelector">
+                    <label for="operator">Operator:</label>
+                    <select name="operator" id="operator" required>
+                        <option value="empty">Choose a operator...</option>
+                        <option value="+">+</option>
+                        <option value="-">-</option>
+                        <option value="*">*</option>
+                        <option value="/">/</option>
+                    </select>
+                    <small class="errorMsg" id="optError">An operator is requird !</small>
+                </div>
+                <div class="btnOperator">
+                    <button type="reset" id="resetBtn" class="btn">Reset</button>
+                    <button type="button" id="calculateBtn" class="btn">Calculate</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="./appli.js"></script>
+
+</html>

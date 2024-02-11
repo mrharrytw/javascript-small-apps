@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style type="text/css">
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #3498db;
+            color: #ecf0f1;
+        }
+
+        .flexbox{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #app {
+            text-align: center;
+            background-color: #2c3e50;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        input {
+            padding: 10px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #e74c3c;
+            color: #ecf0f1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #c0392b;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flexbox">
+        <div id="app">
+            <h1 style="color: #ecf0f1;">Age Calculator</h1>
+            <label for="dob" style="color: #ecf0f1;">Enter your date of birth:</label>
+            <input type="date" id="dob" style="width: auto;">
+            <button onclick="calculateAge()">Calculate Age</button>
+            <p id="result"></p>
+        </div>
+        <div>
+            <small>&copy 2024, Harry Tw. All Rights Reserved</small>
+        </div>
+    </div>
+
+    <script>
+        function calculateAge() {
+            let dobInput = document.getElementById("dob");
+            let result = document.getElementById("result");
+
+            let dob = new Date(dobInput.value);
+            let currentDate = new Date();
+
+            if (dob > currentDate) {
+                result.textContent = "Please enter a valid date of birth.";
+                result.style.color = "#e74c3c";
+                return;
+            }
+
+            let ageInMilliseconds = currentDate - dob;
+
+            let ageDate = new Date(ageInMilliseconds);
+
+            let years = ageDate.getUTCFullYear() - 1970;
+            let months = ageDate.getUTCMonth();
+            let days = ageDate.getUTCDate() - 1;
+
+            result.textContent = "You are " + years + " years, " + months + " months, and " + days + " days old.";
+            result.style.color = "#2ecc71";
+        }
+    </script>
+</body>
+
+</html>
+
+
+

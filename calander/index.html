@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calender</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="btn month-btn">
+            <span id="curmonth">Month</span>
+            <i class="fa-solid fa-caret-down"></i>
+            <div id="months" class="months dropdown ms-2">
+                <div class="dropdown-item">Jan</div>
+                <div class="dropdown-item">Feb</div>
+                <div class="dropdown-item">Mar</div>
+            </div>
+        </div>
+
+        <div class="btn year-btn">
+            <span id="curyear">Year</span>
+            <i class="fa-solid fa-caret-down ms-2"></i>
+            <div id="years" class="years dropdown">
+                <div class="dropdown-item">2000</div>
+                <div class="dropdown-item">2001</div>
+                <div class="dropdown-item">2002</div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="caldates">
+            <div class="days">
+                <label class="day dayname">Sun</label>
+                <label class="day dayname">Mon</label>
+                <label class="day dayname">Tue</label>
+                <label class="day dayname">Wed</label>
+                <label class="day dayname">Thu</label>
+                <label class="day dayname">Fri</label>
+                <label class="day dayname">Sat</label>
+            </div>
+
+            <div class="clear"></div>
+
+            <div id="caldays" class="caldays days">
+                <label class="day">1</label>
+                <label class="day">2</label>
+                <label class="day">3</label>
+                <label class="day">4</label>
+                <label class="day">5</label>
+                <label class="day">6</label>
+                <label class="day">7</label>
+                <label class="day">8</label>
+                <label class="day">9</label>
+                <label class="day">10</label>
+                <label class="day">11</label>
+                <label class="day">12</label>
+                <label class="day">13</label>
+                <label class="day">14</label>
+                <label class="day">15</label>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./app.js"></script>
+</body>
+<!-- 19CA -->
+
+</html>

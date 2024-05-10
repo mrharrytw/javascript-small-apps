@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number guess With Voice Command</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Let's Play</h1>
+        <p>Guess a number between <span class="minnumber">00</span> to <span class="maxnumber">00</span>.</p>
+        <form id="gameform" class="gameform">
+            <div class="form-group">
+                <input type="number" name="guessnumber" id="guessnumber" class="form-control"
+                    placeholder="Enter your guess number..." autofocus />
+                <input type="submit" id="btn" class="btn" />
+            </div>
+            <span class="message1"></span>
+            <span class="message2"></span>
+        </form>
+
+        <button type="button" id="mic-btn" class="mic-btn">
+            <i class="fas fa-microphone"></i> Use Microphone
+        </button>
+
+        <div id="voice-container">
+            <span></span>
+        </div>
+    </div>
+
+
+    <script src="./app.js"></script>
+</body>
+
+</html>
